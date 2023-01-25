@@ -35,6 +35,10 @@
 | BYPAS | перемычка |
 | + | соединить с 3.3V|
 
+* Для работы с постоянным напряжением входные конденсаторы на LIN и RIN необходимо замкнуть.
+
+---
+
 Измерение SNR PCM1802:
 
 ![SCH](https://github.com/pvvx/PowerProfiler_pcm1802/blob/master/img/snr.png)
