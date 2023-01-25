@@ -5,9 +5,9 @@
 
 Используется модуль RV-Debugger-BL702 и CJMCU-PCM1802
 
-![SCH](https://raw.githubusercontent.com/pvvx/ PowerProfiler_pcm1802/main/img/ CJMCU-PCM1802.png)
+![SCH](https://github.com/pvvx/PowerProfiler_pcm1802/blob/master/img/CJMCU-PCM1802.png)
 
-![SCH](https://raw.githubusercontent.com/pvvx/ PowerProfiler_pcm1802/main/img/RV-Debugger-BL702.png)
+![SCH](https://github.com/pvvx/PowerProfiler_pcm1802/blob/master/img/RV-Debugger-BL702.png)
 
 Соединения модулей:
 
@@ -37,10 +37,10 @@
 
 Измерение SNR PCM1802:
 
-![SCH](https://raw.githubusercontent.com/pvvx/ PowerProfiler_pcm1802/main/img/snr.png)
+![SCH](https://github.com/pvvx/PowerProfiler_pcm1802/blob/master/img/snr.png)
 
 Шум в единицах ADC у PCM1802:
 
-![SCH](https://raw.githubusercontent.com/pvvx/ PowerProfiler_pcm1802/main/img/snr-p-p.png)
+![SCH](https://github.com/pvvx/PowerProfiler_pcm1802/blob/master/img/snr-p-p.png)
 
 Тестовая программа PowerProfiler и прошивка находятся в каталоге bin в файле TestPowerProfiler.zip
