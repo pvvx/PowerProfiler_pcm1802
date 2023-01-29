@@ -12,9 +12,7 @@
 #define bl702zb 11
 #define bl702rd 12
 
-#ifndef USE_BOARD
-#define USE_BOARD bl702rd
-#endif
+#define BOARD bl702zb
 
 #define USE_ADC 		0
 

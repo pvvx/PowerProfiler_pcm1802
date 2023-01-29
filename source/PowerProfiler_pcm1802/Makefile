@@ -4,7 +4,7 @@ BL_SDK_BASE ?= ./SDK
 export BL_SDK_BASE
 
 CHIP ?= bl702
-BOARD ?= bl702rd
+BOARD ?= bl702zb
 CROSS_COMPILE ?= riscv64-unknown-elf-
 CONFIG_USB_HS ?=n
 COMPORT ?= COM15

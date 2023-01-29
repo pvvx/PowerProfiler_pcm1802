@@ -59,6 +59,8 @@ struct bflb_device_s bl702_device_table[] = {
       .dev_type = BFLB_DEVICE_TYPE_I2S,
       .user_data = NULL },
 
+
+
     { .name = "pwm_v1",
       .reg_base = PWM_BASE,
       .irq_num = BL702_IRQ_PWM,

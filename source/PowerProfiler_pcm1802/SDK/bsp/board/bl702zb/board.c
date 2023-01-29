@@ -249,7 +249,7 @@ void board_init(void)
 
     printf("dynamic memory init success,heap size = %d Kbyte \r\n", ((size_t)&__HeapLimit - (size_t)&__HeapBase) / 1024);
 
-    //printf("cgen1:%08x\r\n", getreg32(BFLB_GLB_CGEN1_BASE));
+    printf("cgen1:%08x\r\n", getreg32(BFLB_GLB_CGEN1_BASE));
 
     log_start();
 #if defined(CONFIG_BFLOG)

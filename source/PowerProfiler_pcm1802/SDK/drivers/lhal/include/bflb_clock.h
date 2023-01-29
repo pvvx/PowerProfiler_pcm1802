@@ -147,7 +147,7 @@
 #define PERIPHERAL_CLOCK_I2S_ENABLE()                             \
     do {                                                          \
         volatile uint32_t regval = getreg32(BFLB_GLB_CGEN1_BASE); \
-        regval |= (1 << 26);                                      \
+        regval |= (3 << 26);                                      \
         putreg32(regval, BFLB_GLB_CGEN1_BASE);                    \
     } while (0)
 
