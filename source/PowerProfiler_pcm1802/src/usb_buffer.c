@@ -5,7 +5,9 @@
  *      Author: pvvx
  */
 #include "main_config.h"
+#include "board.h"
 #include "usb_buffer.h"
+#include "cmd_cfg.h"
 
 uint32_t blk_read_count, blk_overflow_cnt;
 
@@ -51,20 +53,23 @@ void task_data_out(void) {
 		size = DATA_BUF_CNT - prd + pwr;
 		if(size >= DATA24_BLK_CNT) {
 			size = DATA24_BLK_CNT;
-			data_blk_out.id = 0x0A00 + sizeof(data_blk_out.data);
+			data_blk_out.id = (CMD_DEV_ADC << 8) + sizeof(data_blk_out.data);
+
 			for(int i = prd; i < DATA_BUF_CNT && size; i++) {
 				*p++ = data_buffer[i];
 				*p++ = data_buffer[i] >> 8;
 				*p++ = data_buffer[i] >> 16;
+				prd++;
 				size--;
 			}
-			data_buffer_rd_ptr = size;
 			for(int i = 0; size; i++) {
 				*p++ = data_buffer[i];
 				*p++ = data_buffer[i] >> 8;
 				*p++ = data_buffer[i] >> 16;
+				prd++;
 				size--;
 			}
+			data_buffer_rd_ptr = prd & (DATA_BUF_CNT - 1);
 		} else
 			return;
 
@@ -72,7 +77,7 @@ void task_data_out(void) {
 		size = pwr - prd;
 		if(size >= DATA24_BLK_CNT) {
 			size = DATA24_BLK_CNT;
-			data_blk_out.id = 0x0A00 + sizeof(data_blk_out.data);
+			data_blk_out.id = (CMD_DEV_ADC << 8) + sizeof(data_blk_out.data);
 			for(int i = 0; size; i++) {
 				*p++ = data_buffer[prd];
 				*p++ = data_buffer[prd] >> 8;
@@ -89,25 +94,21 @@ void task_data_out(void) {
 	if(sizeof(data_blk_out) == Ring_Buffer_Write(&usb_tx_rb, (uint8_t *)&data_blk_out, sizeof(data_blk_out))) {
 		blk_read_count++;
 	} else {
-		printf("INA229: buffer overflow!\r\n");
+		printf("USB: buffer overflow!\r\n");
 		blk_overflow_cnt++;
 	}
 
 }
 
-
+/* init ring_buffer */
 void usb_buffers_init(void) {
-	/* init mem for ring_buffer */
-	//    memset(usb_rx_mem, 0, USB_RX_RINGBUFFER_SIZE);
 	memset(usb_tx_mem, 0, USB_TX_RINGBUFFER_SIZE);
-	/* init ring_buffer */
-	//    Ring_Buffer_Init(&usb_rx_rb, usb_rx_mem, USB_RX_RINGBUFFER_SIZE, _ringbuffer_lock, _ringbuffer_unlock);
-
-	#if USE_LOCK_RNG
-	Ring_Buffer_Init(&usb_tx_rb, usb_tx_mem, USB_TX_RINGBUFFER_SIZE, _ringbuffer_lock, _ringbuffer_unlock);
-	#else
-	Ring_Buffer_Init(&usb_tx_rb, usb_tx_mem, USB_TX_RINGBUFFER_SIZE, NULL, NULL);
-	#endif
+	Ring_Buffer_Init(&usb_tx_rb, usb_tx_mem, USB_TX_RINGBUFFER_SIZE,
+#if USE_LOCK_RNG
+			_ringbuffer_lock, _ringbuffer_unlock);
+#else
+			NULL, NULL);
+#endif
 }
 
 
