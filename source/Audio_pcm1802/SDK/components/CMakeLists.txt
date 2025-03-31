@@ -1,0 +1,5 @@
+sdk_add_subdirectory_ifdef(CONFIG_BFLOG bflog)
+add_subdirectory(libc)
+add_subdirectory(mm)
+add_subdirectory(usb)
+add_subdirectory(utils)

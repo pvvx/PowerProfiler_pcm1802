@@ -1,0 +1,42 @@
+
+06 0D 08 00 00AA0040
+      0           4           8           C           10
+20 0D-0A B0 00 00-01 07 00 07-00 00 00 00-00 00 00 00-03 00 03 00-00 00 00 00 00 00 00 00 00 00 00 00
+             5432109876543210
+0x0000B00A = 1011000000001010b
+Slave function
+Enable signal of I2S RXD signal
+Stereo mode
+Normal mode
+FS high/low is even ?bit6
+FS 2-channel mode
+FS 2-channel mode
+Frame size of each channel: 32 (cycles)
+Data bit width of each channel: 24 (bits)
+Left-Justified
+MSB goes out first
+--RX mono mode channel select signal
+Offset cycle count: 1
+Offset enable: Disabled
+
+
+0a 0D 01 00 00AA0040 0A A0 00 00
+
+
+
+06 0D 01 00 8CAA0040
+
+      0           4           8           C           10
+20 0D 02 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Enable signal of dma_rx_req/ack interface
+
+
+06 0D 01 00 68b00142 
+4201b068
+
+
+06 0D 04 00 80AA0040
+      0           4           8           C           
+20 0d 02 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 
+
+0a 0D 01 00 80AA0048 00 00 00 00
